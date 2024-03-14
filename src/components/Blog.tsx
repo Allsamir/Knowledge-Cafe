@@ -13,7 +13,7 @@ interface ChildProps {
         hashtags: Array<string>
     }
      handleBookmarks: (handleBookmarks: string) => void
-     handleReadingTime: (handleReadingTime: number) => void
+     handleReadingTime: (handleReadingTime: number, title: string) => void
 }
 
 export const Blog: React.FC<ChildProps> = ({blogs, handleBookmarks, handleReadingTime}) => {
@@ -38,7 +38,7 @@ export const Blog: React.FC<ChildProps> = ({blogs, handleBookmarks, handleReadin
                                                   <span>{blogs.reading_time} minutes read</span>
                                                   <button type='button' onClick={() => {handleBookmarks(blogs.title); setFill('full')}}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={fill}>
-                                                                      <path d="M17.593 3.322C18.693 3.45 19.5 4.399 19.5 5.507V21L12 17.25L4.5 21V5.507C4.5 4.399 5.306 3.45 6.407 3.322C10.1232 2.89063 13.8768 2.89063 17.593 3.322Z" stroke="#111111" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                      <path d="M17.593 3.322C18.693 3.45 19.5 4.399 19.5 5.507V21L12 17.25L4.5 21V5.507C4.5 4.399 5.306 3.45 6.407 3.322C10.1232 2.89063 13.8768 2.89063 17.593 3.322Z" stroke="#111111" strokeOpacity="0.6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                                                             </svg>
                                                   </button>
                                         </div>
@@ -49,7 +49,7 @@ export const Blog: React.FC<ChildProps> = ({blogs, handleBookmarks, handleReadin
                               {blogs.hashtags.map((hastag, index) => <span key={index}>#{hastag}</span>)}
                     </div>
 
-                    <button><a className="underline text-purple" onClick={() => handleReadingTime(blogs.reading_time)}>Mark as readed</a></button>
+                    <button><a className="underline text-purple" onClick={() => handleReadingTime(blogs.reading_time, blogs.title)}>Mark as readed</a></button>
           </div>
   )
 }

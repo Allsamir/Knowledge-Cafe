@@ -16,14 +16,18 @@ function App() {
     )
   }
 
-  const handleReadingTime = (readingTime: number) => {
+  const handleReadingTime = (readingTime: number, title: string) => {
     setReadingTime(
       [...readingTimes, readingTime]
+    )
+
+    setBookmarks(
+      bookmarks.filter(bookmark => bookmark !== title)
     )
   }
 
   return (
-    <>
+    <div>
         <Header />
         <div className="flex flex-col md:flex-row gap-8">
           <Blogs handleBookmarks={handleBookmarks} handleReadingTime={handleReadingTime}/>
@@ -32,7 +36,7 @@ function App() {
           <Bookmarks bookmarks={bookmarks}/>
           </div>
         </div>
-    </>
+    </div>
   )
 }
 

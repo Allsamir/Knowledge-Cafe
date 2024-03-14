@@ -14,7 +14,7 @@ interface Blogs {
 
 interface ChildProps {
           handleBookmarks: (handleBookmarks: string) => void
-          handleReadingTime:(handleReadingTime: number) => void
+          handleReadingTime:(handleReadingTime: number, title: string) => void
 }
 
 export const Blogs: React.FC<ChildProps> = ({handleBookmarks, handleReadingTime}) => {
@@ -35,7 +35,7 @@ export const Blogs: React.FC<ChildProps> = ({handleBookmarks, handleReadingTime}
     <>
     <div className='md:w-2/3 w-full p-4'>
           {spinner && <div className="text-center"><span className="loading loading-dots loading-lg"></span></div>}
-          {blogs.map(blog => <Blog key={blog.id} blogs={blog} handleBookmarks={handleBookmarks} handleReadingTime={handleReadingTime}/>)}
+          {blogs.map((blog, index)=> <Blog key={index} blogs={blog} handleBookmarks={handleBookmarks} handleReadingTime={handleReadingTime}/>)}
     </div>
     </>
   )
